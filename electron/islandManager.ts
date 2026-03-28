@@ -29,6 +29,8 @@ export function spawnIsland(): void {
     detached: false,
     env: {
       ...process.env,
+      // Mark this process as the Island subprocess so main.ts skips app init
+      MEKA_IS_ISLAND: '1',
       // Strip secrets and main app's dev server URL so Island loads its own renderer
       ANTHROPIC_API_KEY: undefined,
       GEMINI_API_KEY: undefined,

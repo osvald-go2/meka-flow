@@ -5,13 +5,12 @@ import path from 'path'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()],
+    plugins: [externalizeDepsPlugin({ exclude: ['ws'] })],
     build: {
       rollupOptions: {
         input: {
           index: path.resolve(__dirname, 'electron/main.ts')
-        },
-        external: ['ws']
+        }
       }
     }
   },

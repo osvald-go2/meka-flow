@@ -10,7 +10,25 @@ import { startIslandServer, stopIslandServer } from './islandServer';
 import { destroyChatPopup, hideChatPopup } from './chatPopupManager';
 import { spawnIsland, killIsland, isIslandRunning } from './islandManager';
 
-const store = new Store<{ anthropicApiKey?: string; lastProjectDir?: string; islandEnabled?: boolean }>();
+// ── Island subprocess early exit ──
+// When spawned as the Dynamic Island child process, load the island entry
+// and skip all main app initialization.
+if (process.env.MEKA_IS_ISLAND === '1') {
+  const islandEntry = app.isPackaged
+    ? path.join(process.resourcesPath, 'dynamic-island/out/main/index.js')
+    : path.join(__dirname, '../../dynamic-island/out/main/index.js');
+  require(islandEntry);
+} else {
+
+// ── Single instance lock ──
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+  app.quit();
+}
+
+const store = new Store<{ anthropicApiKey?: string; lastProjectDir?: string; islandEnabled?: boolean }>({
+  defaults: { islandEnabled: false },
+});
 
 let mainWindow: BrowserWindow | null = null;
 let sidecar: SidecarManager | null = null;
@@ -449,6 +467,13 @@ ipcMain.handle('harness:mkdir', async (_, dirPath: string) => {
   await fs.mkdir(dirPath, { recursive: true });
 });
 
+app.on('second-instance', () => {
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+  }
+});
+
 app.whenReady().then(() => {
   if (process.platform === 'darwin' && app.dock) {
     app.dock.setIcon(nativeImage.createFromPath(getIconPath()));
@@ -493,3 +518,5 @@ app.on('before-quit', async (event) => {
 app.on('window-all-closed', () => {
   app.quit();
 });
+
+} // end of main app else block
