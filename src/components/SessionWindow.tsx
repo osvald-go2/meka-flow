@@ -896,7 +896,7 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
     }
 
     const systemMsg: Message = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       role: 'system',
       content: `模型已切换为 ${getModelDisplayName(newModelId)}`,
       timestamp: Date.now(),

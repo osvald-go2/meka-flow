@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { CanvasView } from './components/CanvasView';
 import { BoardView } from './components/BoardView';
 import { TabView } from './components/TabView';
@@ -122,6 +122,15 @@ export default function App() {
   const [showHomePage, setShowHomePage] = useState(true);
   const [viewMode, setViewMode] = useState<'canvas' | 'board' | 'tab'>('canvas');
   const [sessions, setSessions] = useState<Session[]>(initialSessions);
+  // Deduplicate sessions to prevent React duplicate key warnings from legacy data
+  const dedupedSessions = useMemo(() => {
+    const seen = new Set<string>();
+    return sessions.filter(s => {
+      if (seen.has(s.id)) return false;
+      seen.add(s.id);
+      return true;
+    });
+  }, [sessions]);
   const [isNewModalOpen, setIsNewModalOpen] = useState(false);
   const [copyTitle, setCopyTitle] = useState('');
   const [focusedSessionId, setFocusedSessionId] = useState<string | null>(null);
@@ -160,7 +169,7 @@ export default function App() {
   const harness = useHarnessController(sessions, setSessions, projectDir, sessionRefs, initialHarnessGroups);
 
   // Compute terminal cwd based on active session's worktree
-  const activeSession = sessions.find(s => s.id === activeSessionId);
+  const activeSession = dedupedSessions.find(s => s.id === activeSessionId);
   const terminalCwd = (activeSession?.worktree && activeSession.worktree !== 'default')
     ? activeSession.worktree
     : projectDir ?? '';
@@ -803,7 +812,7 @@ export default function App() {
         viewMode={viewMode}
         setViewMode={setViewMode}
         onNewSession={() => setIsNewModalOpen(true)}
-        sessions={sessions}
+        sessions={dedupedSessions}
         onLocateSession={handleLocateSession}
         searchInputRef={searchInputRef}
         showGitPanel={showGitPanel}
@@ -831,7 +840,7 @@ export default function App() {
             <div className="flex-1 min-w-0 min-h-0">
               {viewMode === 'canvas' ? (
                 <CanvasView
-                  sessions={sessions}
+                  sessions={dedupedSessions}
                   setSessions={setSessions}
                   focusedSessionId={focusedSessionId}
                   projectDir={projectDir}
@@ -850,7 +859,7 @@ export default function App() {
                 />
               ) : viewMode === 'board' ? (
                 <BoardView
-                  sessions={sessions}
+                  sessions={dedupedSessions}
                   setSessions={setSessions}
                   focusedSessionId={focusedSessionId}
                   projectDir={projectDir}
@@ -863,7 +872,7 @@ export default function App() {
                 />
               ) : (
                 <TabView
-                  sessions={sessions}
+                  sessions={dedupedSessions}
                   setSessions={setSessions}
                   focusedSessionId={focusedSessionId}
                   projectDir={projectDir}
