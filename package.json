@@ -54,6 +54,14 @@
       {
         "from": "ai-backend/target/release/ai-backend",
         "to": "ai-backend"
+      },
+      {
+        "from": "dynamic-island/out",
+        "to": "dynamic-island/out"
+      },
+      {
+        "from": "dynamic-island/resources",
+        "to": "dynamic-island/resources"
       }
     ],
     "mac": {

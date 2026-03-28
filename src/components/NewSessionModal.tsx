@@ -42,7 +42,7 @@ const GeminiIcon = () => (
 const PROVIDERS: { id: ProviderId; name: string; icon: React.FC }[] = [
   { id: 'claude', name: 'Claude Code', icon: ClaudeIcon },
   { id: 'codex', name: 'Codex', icon: CodexIcon },
-  { id: 'gemini', name: 'Gemini CLI', icon: GeminiIcon },
+  // { id: 'gemini', name: 'Gemini CLI', icon: GeminiIcon }, // TODO: not yet supported
 ];
 
 export function NewSessionModal({ isOpen, onClose, onCreate, projectDir, isGitRepo, defaultTitle }: NewSessionModalProps) {

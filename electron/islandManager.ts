@@ -20,7 +20,9 @@ function broadcastStatus(running: boolean): void {
 export function spawnIsland(): void {
   if (islandProcess) return
 
-  const islandMain = path.join(__dirname, '../../dynamic-island/out/main/index.js')
+  const islandMain = app.isPackaged
+    ? path.join(process.resourcesPath, 'dynamic-island/out/main/index.js')
+    : path.join(__dirname, '../../dynamic-island/out/main/index.js')
 
   islandProcess = spawn(process.execPath, [islandMain], {
     stdio: 'ignore',
