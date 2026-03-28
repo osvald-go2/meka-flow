@@ -10,7 +10,8 @@ export default defineConfig({
       rollupOptions: {
         input: {
           index: path.resolve(__dirname, 'electron/main.ts')
-        }
+        },
+        external: ['bufferutil', 'utf-8-validate']
       }
     }
   },
