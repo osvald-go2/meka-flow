@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, useEffect, useCallback, forwardRef, useImperativeHandle, useMemo } from 'react';
 import { X, Clock, Plus, MessageSquare, Send, Copy, ThumbsUp, ThumbsDown, ArrowUp, Square, Minus, Check, Pencil, RotateCcw, GitBranch, GitFork, Trash2, ChevronDown, Loader2 } from 'lucide-react';
 import { Session, Message, ContentBlock, SkillInfo } from '../types';
 import type { SessionWindowHandle } from '../types';
@@ -175,7 +175,17 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
     return `${Math.floor(diff / 86400)} 天前`;
   };
 
-  const recentUserMessages = session.messages
+  // Deduplicate messages to prevent React duplicate key warnings from legacy data
+  const dedupedMessages = useMemo(() => {
+    const seen = new Set<string>();
+    return session.messages.filter(m => {
+      if (seen.has(m.id)) return false;
+      seen.add(m.id);
+      return true;
+    });
+  }, [session.messages]);
+
+  const recentUserMessages = dedupedMessages
     .filter(m => m.role === 'user')
     .slice(-5)
     .reverse();
@@ -1254,7 +1264,7 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
             <ComplexMockContent />
           ) : (
             <div className="space-y-6">
-              {session.messages.map(msg => {
+              {dedupedMessages.map(msg => {
                 const isMsgStreaming = isStreaming && streamingMessageId === msg.id;
                 return (
                   <div key={msg.id} className={`group/msg flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
