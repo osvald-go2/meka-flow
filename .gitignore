@@ -1,0 +1,59 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+.superpowers/
+docs/
+MuMu/
+
+# AI tool configs
+.agent/
+.agents/
+.meka-flow/
+.claude/
+.codebuddy/
+.commandcode/
+.continue/
+.crush/
+.factory/
+.goose/
+.junie/
+.kilocode/
+.kiro/
+.kode/
+.mcpjam/
+.mux/
+.neovate/
+.openhands/
+.pi/
+.pochi/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.windsurf/
+.zencoder/
+
+# Build & release artifacts
+out/
+release/
+demo-video/
+resources/
+
+# Reference files
+land_demo/
+
+# Misc
+skills/
+skills-lock.json
+macos-messages-icon.svg
+electron-dynamic-island
+
+# Worktrees & loose assets
+.ai-studio/worktrees/
+demo.icon/
+ui demo/

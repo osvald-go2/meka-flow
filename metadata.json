@@ -1,0 +1,5 @@
+{
+  "name": "Meka Flow",
+  "description": "A desktop app for managing multiple AI sessions (Claude, Codex, Gemini) concurrently across canvas, board, and tab views.",
+  "requestFramePermissions": []
+}

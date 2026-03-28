@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" fill="none" viewBox="0 0 256 256">
+<!-- SVG created with Arrow, by QuiverAI (https://quiver.ai) -->
+  <path d="m195.8 0.04h-135.9c-32.99 0-59.85 27.55-59.85 61.47v134.4c0 33.18 26.86 60 59.85 60h135.9c33.13 0 60.09-26.86 60.09-60.14v-134.3c0-33.96-26.87-61.47-60.05-61.47z" fill="#000"/>
+  <path d="m195.8 0.01h-135.9c-33.07 0-59.85 26.74-59.85 60.02v135.9c0 33.05 26.74 59.95 59.85 59.95h135.9c33.35 0 60.13-26.73 60.13-60.13v-135.6c0-33.4-26.74-60.1-60.09-60.1zm59.69 195.7c0 33.01-26.6 59.58-59.73 59.58h-135.9c-32.82 0-59.41-26.65-59.41-59.4v-135.9c0-32.97 26.55-59.54 59.41-59.54h135.9c33.17 0 59.73 26.53 59.73 59.62v135.6z" fill="#FEFEFE" opacity=".2"/>
+  <path d="m246.9 150.7c-4.22-21.63-14.45-50.65-23.62-73.27-8.22-20.52-21.15-27.22-34.72-27.01-20.85 0-37.81 15.74-61.99 57.66l-0.18 0.3c9.09 17.6 19.87 30.91 28.66 38.26 9.13-13.4 18.67-35.25 25.72-49.97 2.33 14.37 5.15 47.81 5.55 61.59 0.96 15.25 12.46 29.07 27.93 28.81 17.51 0 34.43-15.06 32.65-34.76v-1.61z" fill="url(#paint0_linear_303_4121)"/>
+  <path d="m126.2 109.1-0.17-0.43c-17.77-33.65-36.51-57.95-61.25-57.95-18.7 0-30.33 11.58-37.55 30.25-9.41 23.66-19.98 58.02-20.51 75.62 0 16.83 13.35 31.28 30.57 31.11 16.35 0 27.62-12.32 28.76-26.18l4.01-64.93c8.75 20.03 16.06 39.29 27.52 51.21 10.34-7.92 20.53-22.55 28.62-38.7z" fill="url(#paint1_radial_303_4121)"/>
+  <path d="m126.4 109.7-0.18-0.44c-8.48 17.18-18.28 30.66-28.49 38.32 8.35 10.23 17.14 16.44 28.81 16.44 10.52 0 19.6-6.38 27.47-16.66-10.43-8.96-19.31-22.4-27.61-37.66z" fill="url(#paint2_linear_303_4121)" stroke="url(#paint2_linear_303_4121)" stroke-width="3" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="paint0_linear_303_4121" x1="186.6" x2="194.7" y1="50.4" y2="187.1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDB639" offset="0"/>
+      <stop stop-color="#FCB039" offset=".363"/>
+      <stop stop-color="#F89E38" offset=".841"/>
+      <stop stop-color="#F69738" offset="1"/>
+    </linearGradient>
+    <radialGradient id="paint1_radial_303_4121" cx="0" cy="0" r="1" gradientTransform="translate(62.27 60.88) scale(150.9 151.2)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9A2494" offset="0"/>
+      <stop stop-color="#882591" offset=".215"/>
+      <stop stop-color="#5A2989" offset=".653"/>
+      <stop stop-color="#2D2D80" offset="1"/>
+    </radialGradient>
+    <linearGradient id="paint2_linear_303_4121" x1="125.8" x2="125.8" y1="109.2" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDB639" offset="0"/>
+      <stop stop-color="#FA9D38" offset=".311"/>
+      <stop stop-color="#F36335" offset=".957"/>
+      <stop stop-color="#F25F35" offset="1"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,51 @@
+{
+  "name": "dynamic-island",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "lint": "tsc --noEmit",
+    "pack": "electron-vite build && electron-builder --dir",
+    "dist": "electron-vite build && electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.dynamic-island.app",
+    "productName": "Dynamic Island",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.developer-tools"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "resources/**/*"
+    ]
+  },
+  "dependencies": {
+    "lucide-react": "^0.511.0",
+    "motion": "^12.12.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^4.0.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.5.10",
+    "@vitejs/plugin-react": "^4.5.2",
+    "electron": "^41.0.2",
+    "electron-builder": "^26.8.1",
+    "electron-vite": "^3.0.0",
+    "tailwindcss": "^4.1.14",
+    "typescript": "~5.8.2"
+  }
+}

@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surface colors — dark warm palette */
+  --color-surface: #1E1814;
+  --color-surface-elevated: #2A2520;
+  --color-surface-panel: #2B2D3A;
+  --color-surface-overlay: #3B3F4F;
+}
+
+pre {
+  white-space: pre;
+}
+
+/* Global scrollbar — thin, auto-hide */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.scrollbar-on-hover::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.scrollbar-on-hover:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.scrollbar-on-hover:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes thinking-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+.thinking-dot {
+  animation: thinking-dot 1.4s ease-in-out infinite;
+}
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .thinking-dot {
+    animation: none;
+  }
+}
