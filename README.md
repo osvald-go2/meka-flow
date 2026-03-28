@@ -13,8 +13,16 @@
 **三种视图，灵活切换**
 
 - **无限画布 (Canvas)** — 自由拖拽、缩放、多选会话，支持向选中会话批量广播消息
+
+![Canvas](resources/canvas.png)
+
 - **看板视图 (Board)** — 按状态列分组：inbox → in process → review → done，拖拽改变状态
+
+![Dashboard](resources/dashboard.png)
+
 - **标签页视图 (Tab)** — 传统标签页导航，内置搜索
+
+![Tab](resources/tab.png)
 
 **多 AI Agent 支持**
 

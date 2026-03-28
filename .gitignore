@@ -42,7 +42,8 @@ MuMu/
 out/
 release/
 demo-video/
-/resources/
+/resources/*.icns
+/resources/*.ico
 
 # Reference files
 land_demo/
