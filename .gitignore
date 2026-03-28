@@ -42,7 +42,7 @@ MuMu/
 out/
 release/
 demo-video/
-resources/
+/resources/
 
 # Reference files
 land_demo/

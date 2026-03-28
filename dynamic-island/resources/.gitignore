@@ -1,0 +1,2 @@
+# Track HTML entry points — override parent .gitignore
+!*.html
