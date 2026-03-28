@@ -17,7 +17,12 @@ if (process.env.MEKA_IS_ISLAND === '1') {
   const islandEntry = app.isPackaged
     ? path.join(process.resourcesPath, 'dynamic-island/out/main/index.js')
     : path.join(__dirname, '../../dynamic-island/out/main/index.js');
-  require(islandEntry);
+  if (fs.existsSync(islandEntry)) {
+    require(islandEntry);
+  } else {
+    console.warn('[main] Island entry not found, quitting subprocess:', islandEntry);
+    app.quit();
+  }
 } else {
 
 // ── Single instance lock ──

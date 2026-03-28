@@ -1,4 +1,5 @@
 import { spawn, ChildProcess } from 'child_process'
+import fs from 'fs'
 import { app, BrowserWindow } from 'electron'
 import path from 'path'
 import { getIslandPort } from './islandServer'
@@ -23,6 +24,12 @@ export function spawnIsland(): void {
   const islandMain = app.isPackaged
     ? path.join(process.resourcesPath, 'dynamic-island/out/main/index.js')
     : path.join(__dirname, '../../dynamic-island/out/main/index.js')
+
+  if (!fs.existsSync(islandMain)) {
+    console.warn('[islandManager] Island entry not found, skipping:', islandMain)
+    broadcastStatus(false)
+    return
+  }
 
   islandProcess = spawn(process.execPath, [islandMain], {
     stdio: 'ignore',
