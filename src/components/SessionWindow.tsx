@@ -415,7 +415,7 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
     if (session.messages.length === 1 && session.messages[0].role === 'user' && !isStreamingRef.current) {
       const triggerInitialResponse = async () => {
         await captureGitBaseline();
-        const aiMsgId = (Date.now() + 1).toString();
+        const aiMsgId = crypto.randomUUID();
         const initialText = session.messages[0].content;
 
         const aiMsg: Message = {
@@ -494,7 +494,7 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
       if (lastMsg.role === 'user') {
         const triggerBroadcastResponse = async () => {
           await captureGitBaseline();
-          const aiMsgId = (Date.now() + 1).toString();
+          const aiMsgId = crypto.randomUUID();
           const aiMsg: Message = {
             id: aiMsgId,
             role: 'assistant',
@@ -590,14 +590,14 @@ export const SessionWindow = forwardRef<SessionWindowHandle, SessionWindowProps>
     await captureGitBaseline();
 
     const userMsg: Message = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       role: 'user',
       content: text,
       type: 'text',
       timestamp: Date.now()
     };
 
-    const aiMsgId = (Date.now() + 1).toString();
+    const aiMsgId = crypto.randomUUID();
     const aiMsg: Message = {
       id: aiMsgId,
       role: 'assistant',

@@ -649,8 +649,9 @@ export default function App() {
   const handleCreateSession = (title: string, model: string, gitBranch: string, worktree: string, initialPrompt: string) => {
     const position = findNextGridPosition(sessions, canvasWidthRef.current);
     const now = new Date().toISOString();
+    const sessionId = crypto.randomUUID();
     const newSession: Session = {
-      id: Date.now().toString(),
+      id: sessionId,
       title,
       model,
       gitBranch,
@@ -658,7 +659,7 @@ export default function App() {
       status: 'inbox',
       position,
       messages: initialPrompt.trim() ? [{
-        id: Date.now().toString() + '-init',
+        id: crypto.randomUUID(),
         role: 'user',
         content: initialPrompt.trim(),
         type: 'text',

@@ -326,7 +326,7 @@ export function CanvasView({
           messages: [
             ...session.messages,
             {
-              id: Date.now().toString() + '-' + Math.random().toString(36).substr(2, 9),
+              id: crypto.randomUUID(),
               role: 'user',
               content: broadcastMessage,
               type: 'text',
